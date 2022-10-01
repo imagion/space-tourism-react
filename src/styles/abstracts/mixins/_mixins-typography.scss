@@ -1,0 +1,28 @@
+@use '../typos' as *;
+@use 'sass:map';
+
+// Typography mixins
+// ==========
+
+// Font Smoothing
+// --------------
+// Mixin to turn on font smoothing, especially for light text on dark
+// background for OSX
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+// Text overflow
+// -------------
+// Requires inline-block or block for proper styling
+@mixin text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

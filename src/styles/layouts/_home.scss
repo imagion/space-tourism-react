@@ -1,0 +1,78 @@
+@use '../abstracts' as *;
+
+.home {
+  --heading-padding: 1rem;
+  background-image: url(/src/assets/images/home/background-home-mobile.jpg);
+
+  h1 {
+    --flow-spacer: 1rem;
+    + p {
+      --flow-spacer: 1rem;
+    }
+  }
+
+  .btn {
+    --flow-spacer: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+  }
+
+  @include bp(med) {
+    --heading-padding: 6.625rem;
+    background-image: url(/src/assets/images/home/background-home-tablet.jpg);
+
+    .container {
+      justify-items: center;
+      > * {
+        max-width: 28.125rem;
+      }
+    }
+
+    h1 {
+      --flow-spacer: 1.5rem;
+      + p {
+        --flow-spacer: 1.5rem;
+      }
+    }
+
+    .btn {
+      --flow-spacer: 9.75rem;
+    }
+  }
+
+  @include bp(wide) {
+    bottom: 4.1em;
+    right: 5.15em;
+    background-image: url(/src/assets/images/home/background-home-desktop.jpg);
+
+    .container {
+      grid-template-areas:
+        '. subheader button .'
+        '. header button .'
+        '. paragraph button .';
+      align-content: end;
+      align-items: end;
+      justify-items: start;
+      padding-bottom: 6.5em;
+    }
+
+    h5 {
+      grid-area: subheader;
+    }
+    h1 {
+      grid-area: header;
+    }
+    p {
+      grid-area: paragraph;
+    }
+    .btn {
+      --flow-spacer: 0;
+      position: revert;
+      grid-area: button;
+      margin-left: auto;
+      transform: revert;
+    }
+  }
+}

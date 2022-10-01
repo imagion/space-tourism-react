@@ -1,0 +1,33 @@
+@use '../abstracts' as *;
+
+%btn {
+  display: inline-block;
+  width: 7.5em;
+  height: 7.5em;
+  background-color: var(--bgc, hsl(var(--c-primary-100)));
+  border-radius: 50%;
+  font-family: var(--ff-serif);
+  font-size: var(--fs-btn, 1.125rem);
+  color: var(--text, hsl(var(--c-primary-900)));
+  line-height: 1;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 2.75em hsl(var(--c-primary-400) / 0.1);
+  }
+}
+
+.btn {
+  @extend %btn;
+  @include bp(med) {
+    --fs-btn: 2rem;
+  }
+}

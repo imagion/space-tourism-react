@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+.header {
+  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  @include bp(wide) {
+    top: 2.5rem;
+  }
+}

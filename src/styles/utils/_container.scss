@@ -1,0 +1,33 @@
+@use '../abstracts' as *;
+
+%container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  @include bp(med) {
+    display: grid;
+    grid-template-columns:
+      1fr
+      4fr
+      4fr
+      1fr;
+    padding: 0;
+  }
+  @include bp(wide) {
+    height: 100%;
+  }
+}
+
+.container {
+  @extend %container;
+  > * {
+    grid-column: 2 / span 2;
+  }
+
+  &--full {
+    @extend %container;
+    > * {
+      grid-column: 1 / span 4;
+    }
+  }
+}

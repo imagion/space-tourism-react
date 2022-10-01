@@ -1,0 +1,135 @@
+@use '../abstracts' as *;
+
+.technology {
+  background-image: url(/src/assets/images/technology/background-technology-mobile.jpg);
+
+  .picture-wrap {
+    --flow-spacer: 2em;
+    margin-inline: -1rem;
+
+    @include bp(med) {
+      grid-column: 1/ -1;
+      margin-inline: revert;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    @include bp(wide) {
+      --flow-spacer: 3.75rem;
+      grid-column: 2 / span 2;
+      margin-left: 130px;
+    }
+  }
+
+  .content-wrap {
+    --flow-spacer: 2em;
+
+    @include bp(wide) {
+      display: flex;
+      --flow-spacer: 0;
+    }
+  }
+
+  &__controls {
+    @include bp(wide) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  button {
+    text-align: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: transparent;
+    border: 1px solid hsl(var(--c-primary-100) / 0.25);
+    border-radius: 50%;
+    font-size: 1rem;
+    color: hsl(var(--c-primary-100));
+    cursor: pointer;
+    transition: border 0.25s ease-in-out, background-color 0.25s ease-in-out,
+      color 0.25s ease-in-out;
+
+    + button {
+      margin-left: 1rem;
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid hsl(var(--c-primary-100));
+    }
+
+    &.active {
+      background-color: hsl(var(--c-primary-100));
+      border: 1px solid hsl(var(--c-primary-100));
+      color: hsl(var(--c-primary-900));
+    }
+
+    @include bp(med) {
+      width: 3.75rem;
+      height: 3.75rem;
+      font-size: 1.5rem;
+    }
+
+    @include bp(wide) {
+      width: 5rem;
+      height: 5rem;
+      font-size: 2rem;
+
+      + button {
+        margin-left: revert;
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  &__content {
+    --flow-spacer: 1em;
+    margin-bottom: 5rem;
+    display: grid;
+    justify-content: center;
+    align-content: start;
+    @include bp(med) {
+      --flow-spacer: 2.75rem;
+      margin-bottom: 6.25rem;
+
+      h3 {
+        + p {
+          --flow-spacer: 1em;
+        }
+      }
+    }
+
+    @include bp(wide) {
+      --flow-spacer: 0;
+      margin-left: 5rem;
+    }
+  }
+
+  @include bp(med) {
+    background-image: url(/src/assets/images/technology/background-technology-tablet.jpg);
+  }
+
+  @include bp(wide) {
+    background-image: url(/src/assets/images/technology/background-technology-desktop.jpg);
+
+    .container {
+      grid-template-areas:
+        '. header picture picture'
+        '. content picture picture';
+    }
+
+    h5 {
+      grid-area: header;
+    }
+
+    .picture-wrap {
+      grid-area: picture;
+    }
+    .content-wrap {
+      grid-area: content;
+    }
+  }
+}

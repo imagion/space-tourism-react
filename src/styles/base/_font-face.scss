@@ -1,0 +1,22 @@
+// FONTS
+// ---------
+// Inclide static fonts
+// ==========
+
+@mixin font($fname, $fweight, $furl, $fstyle: normal, $fvar: true) {
+  @font-face {
+    font-family: $fname;
+    font-weight: $fweight;
+    font-style: $fstyle;
+    @if $fvar {
+      src: url('../assets/fonts/' + $furl + '.ttf') format('truetype');
+    } @else {
+      src: url('../assets/fonts/' + $furl + '.woff2') format('woff2');
+    }
+    font-display: swap;
+  }
+}
+
+// @include font('Open Sans', 100 900, 'OpenSansVariableFont');
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap');

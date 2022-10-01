@@ -1,0 +1,141 @@
+@use '../abstracts' as *;
+
+// TODO: исправить дергание слайдера на широких экранах
+
+.crew {
+  background-image: linear-gradient(
+      hsl(230 35% 7% /0.75),
+      hsl(230 35% 7% /0.75)
+    ),
+    url(/src/assets/images/crew/background-crew-mobile.jpg);
+  background-blend-mode: darken;
+
+  .picture-wrap {
+    --flow-spacer: 2em;
+    border-bottom: 1px solid hsl(var(--c-primary-400) / 0.15);
+
+    @include bp(med) {
+      --flow-spacer: 2.5em;
+      order: 3;
+      border-bottom: none;
+    }
+    @include bp(wide) {
+      --flow-spacer: 0;
+    }
+  }
+  picture {
+    max-width: 11rem;
+    @include bp(med) {
+      max-width: 26.5rem;
+    }
+    @include bp(wide) {
+      max-width: 38.4375rem;
+    }
+  }
+
+  &__controls {
+    --flow-spacer: 2em;
+    button {
+      position: relative;
+      display: inline-block;
+      padding: 0.75em;
+      cursor: pointer;
+      + button {
+        margin-left: 0.75rem;
+      }
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0.625rem;
+        height: 0.625rem;
+        background-color: hsl(var(--c-primary-100));
+        border-radius: 50%;
+        opacity: 0.17;
+        content: '';
+        transform: translate(-50%, -50%);
+        transition: opacity 0.25s ease-in-out;
+      }
+
+      &.active {
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+
+    @include bp(med) {
+      --flow-spacer: 2.5em;
+      order: 2;
+    }
+
+    @include bp(wide) {
+      --flow-spacer: 7.5rem;
+
+      button {
+        &::after {
+          width: 0.9375rem;
+          height: 0.9375rem;
+        }
+      }
+    }
+  }
+
+  &__content {
+    --flow-spacer: 2em;
+    h3 {
+      + p {
+        --flow-spacer: 1.5em;
+      }
+    }
+
+    @include bp(med) {
+      order: 1;
+      --flow-spacer: 3.75em;
+    }
+
+    @include bp(wide) {
+      --flow-spacer: 9.625rem;
+    }
+  }
+
+  @include bp(med) {
+    background-image: linear-gradient(
+        hsl(230 35% 7% /0.75),
+        hsl(230 35% 7% /0.75)
+      ),
+      url(/src/assets/images/crew/background-crew-tablet.jpg);
+  }
+
+  @include bp(wide) {
+    background-image: linear-gradient(
+        hsl(230 35% 7% /0.75),
+        hsl(230 35% 7% /0.75)
+      ),
+      url(/src/assets/images/crew/background-crew-desktop.jpg);
+  }
+
+  .container {
+    grid-template-areas:
+      '. header picture .'
+      '. content picture .'
+      '. controls picture .'
+      '. . picture .';
+    justify-items: start;
+  }
+  h5 {
+    grid-area: header;
+  }
+  .picture-wrap {
+    grid-area: picture;
+    justify-self: end;
+    align-self: end;
+  }
+  &__controls {
+    grid-area: controls;
+  }
+  &__content {
+    grid-area: content;
+  }
+}

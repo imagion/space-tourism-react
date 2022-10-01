@@ -1,0 +1,57 @@
+@use '../abstracts' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: grid;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: hsl(var(--c-primary-900));
+  line-height: 1.6;
+  text-rendering: optimizeSpeed;
+}
+
+main {
+  height: 100%;
+  padding-top: calc(
+    1.75rem + 4.25rem + var(--heading-padding, -0.5rem) +
+      var(--wide-padding, 0rem)
+  );
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include bp(med) {
+    --heading-padding: 2.5rem;
+  }
+
+  @include bp(wide) {
+    --wide-padding: 2.5rem;
+    --heading-padding: 4.75rem;
+  }
+}
+
+img {
+  display: block;
+}
+
+:focus-visible {
+  outline: 0.25rem dotted hsl(var(--c-primary-400));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
