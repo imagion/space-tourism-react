@@ -1,2 +1,13 @@
+# build
 node_modules
 dist
+
+# VSCode
+.vscode/*
+
+# Sass
+.sass-cache/
+*.scss.map
+
+# Windows
+Thumbs.db
